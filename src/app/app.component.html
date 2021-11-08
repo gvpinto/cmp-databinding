@@ -1,4 +1,28 @@
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control
+        (streamTicks)="addTick($event)"
+        (tickerListClear)="clearTicker()"
+      ></app-game-control>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <!-- <div class="panel-heading">{{ element.name }}</div> -->
+    <div class="panel-heading">Ticker</div>
+    <div class="panel-body">
+      <p *ngFor="let tickValue of tickerList">
+        <app-even
+          *ngIf="tickValue % 2 == 0; else elseOdd"
+          [tickValue]="tickValue"
+        ></app-even>
+        <ng-template #elseOdd>
+          <app-odd [tickValue]="tickValue"></app-odd>
+        </ng-template>
+      </p>
+    </div>
+  </div>
+  <hr />
   <app-cockpit
     (serverCreated)="addServer($event)"
     (bpCreated)="addBlueprint($event)"

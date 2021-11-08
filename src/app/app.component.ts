@@ -10,6 +10,8 @@ export class AppComponent {
     { type: "server", name: "TestServer", content: "Just a Test!" },
   ];
 
+  tickerList = [];
+
   addServer(server: { serverName: string; serverContent: string }) {
     this.serverElements.push({
       type: "server",
@@ -32,5 +34,13 @@ export class AppComponent {
 
   onDestroyFirst() {
     this.serverElements.splice(0, 1);
+  }
+
+  addTick(ticker: { value: number }) {
+    this.tickerList.push(ticker.value);
+  }
+
+  clearTicker(): void {
+    this.tickerList = [];
   }
 }
