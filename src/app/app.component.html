@@ -11,15 +11,14 @@
     <!-- <div class="panel-heading">{{ element.name }}</div> -->
     <div class="panel-heading">Ticker</div>
     <div class="panel-body">
-      <p *ngFor="let tickValue of tickerList">
-        <app-even
-          *ngIf="tickValue % 2 == 0; else elseOdd"
-          [tickValue]="tickValue"
-        ></app-even>
-        <ng-template #elseOdd>
-          <app-odd [tickValue]="tickValue"></app-odd>
-        </ng-template>
-      </p>
+      <app-odd
+        *ngFor="let oddNumber of oddNumbers"
+        [tickValue]="oddNumber"
+      ></app-odd>
+      <app-even
+        *ngFor="let evenNumber of evenNumbers"
+        [tickValue]="evenNumber"
+      ></app-even>
     </div>
   </div>
   <hr />

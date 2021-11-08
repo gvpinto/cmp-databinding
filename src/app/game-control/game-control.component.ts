@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
   styleUrls: ["./game-control.component.css"],
 })
 export class GameControlComponent implements OnInit {
-  @Output() streamTicks = new EventEmitter<{ value: number }>();
+  @Output() streamTicks = new EventEmitter<number>();
   @Output() tickerListClear = new EventEmitter();
   ticker: number = 0;
   tickerRef = null;
@@ -16,7 +16,7 @@ export class GameControlComponent implements OnInit {
 
   onStart(event: any): void {
     this.tickerRef = setInterval(() => {
-      this.streamTicks.emit({ value: this.ticker++ });
+      this.streamTicks.emit(this.ticker++);
     }, 1000);
   }
 
